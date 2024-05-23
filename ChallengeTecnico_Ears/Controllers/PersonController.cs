@@ -15,17 +15,18 @@ namespace ChallengeTecnico_Ears.Controllers
 
         /* Se requiere que se haga uso del servicio ya creado previamente */ 
 
-        /* Sera valorada la persepcion y solucion de posibles escenarios de error */
+        /* Sera valorada la percepción y solución de posibles escenarios de error */
+
         public PersonController( ILogger<PersonController> logger)
         {
             _logger = logger;
            
         }
 
-        [HttpGet(Name = "GetPersons")]
+        [HttpGet]
         public List<PersonModel> Get()
         {
-          
+            return null;
         }
     }
 }

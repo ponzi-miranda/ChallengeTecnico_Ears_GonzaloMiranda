@@ -16,9 +16,7 @@ namespace ChallengeTecnico_Ears.Models
 
         public bool Active { get; set; } = true;
 
-
-
-        public virtual ICollection<OfficeModel> oficces { get; set; }
+        public virtual ICollection<OfficeModel> Offices { get; set; }
 
     }
 }

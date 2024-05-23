@@ -20,11 +20,11 @@ namespace ChallengeTecnico_Ears.Services
 
             List<PersonModel> _Person = new List<PersonModel>();
 
-            /* Aqui se debera implementar la logica para llamar recuperar los datos de la base 
+            /* Aquí será requerido implementar la lógica para llamar y recuperar los datos de la base 
                Se requiere recuperar los datos de las personas activas con sus respectivas oficinas  
                y luego filtrar a las personas con legajo mayor a 1003 */
 
-            /* Sera valorada la persepcion y solucion de posibles escenarios de error */
+            /* Será valorada la percepción y solución de posibles escenarios de error */
 
             return _Person;
         }

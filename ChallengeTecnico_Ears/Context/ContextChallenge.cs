@@ -26,7 +26,7 @@ namespace ChallengeTecnico_Ears.Context
 
             modelBuilder.Entity<OfficeModel>()
             .HasOne(o => o.Person)
-            .WithMany(p => p.oficces)  
+            .WithMany(p => p.Offices)  
             .HasForeignKey(o => o.IdPerson);
 
 
