@@ -17,19 +17,18 @@ namespace ChallengeTecnico_Ears.Services
 
         public List<PersonModel> GetPersonList()
         {
-
             List<PersonModel> _Person = new List<PersonModel>();
 
-            /* Aquí será requerido implementar la lógica para llamar y recuperar los datos de la base 
-               Se requiere recuperar los datos de las personas activas con sus respectivas oficinas  
-               y luego filtrar a las personas con legajo mayor a 1003 */
-
-            /* Será valorada la percepción y solución de posibles escenarios de error */
+            try
+            {
+                _Person = _context.T_Person.Include(p => p.Offices).Where(p => p.Active && p.EmployeeFile > 1003).ToList();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al recuperar la lista de personas.", ex);
+            }
 
             return _Person;
         }
-
-
-
     }
 }

@@ -1,5 +1,6 @@
 using ChallengeTecnico_Ears.IService;
 using ChallengeTecnico_Ears.Models;
+using ChallengeTecnico_Ears.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 
@@ -9,24 +10,37 @@ namespace ChallengeTecnico_Ears.Controllers
     [Route("[controller]")]
     public class PersonController : ControllerBase
     {
-       
 
+
+        private readonly IPersonService _personService;
         private readonly ILogger<PersonController> _logger;
 
-        /* Se requiere que se haga uso del servicio ya creado previamente */ 
 
-        /* Sera valorada la percepción y solución de posibles escenarios de error */
 
-        public PersonController( ILogger<PersonController> logger)
+        public PersonController(ILogger<PersonController> logger, IPersonService iPersonService)
         {
             _logger = logger;
-           
+            this._personService = iPersonService;
         }
 
         [HttpGet]
-        public List<PersonModel> Get()
+        public IActionResult Get()
         {
-            return null;
+            try
+            {
+                var personas = _personService.GetPersonList();
+                if (personas == null || !personas.Any())
+                {
+                    return NotFound("No se encontraron personas activas con legajo mayor a 1003.");
+                }
+
+                return Ok(personas);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error al recuperar la lista de personas.");
+                return StatusCode(500, "Ocurrió un error al procesar la solicitud.");
+            }
         }
     }
 }
